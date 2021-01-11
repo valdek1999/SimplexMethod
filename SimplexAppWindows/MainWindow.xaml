@@ -1,0 +1,62 @@
+﻿<Window x:Class="SimplexAppWindows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SimplexAppWindows"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="515" Width="365" WindowStyle="None" ResizeMode="NoResize" >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF222B3B" Offset="0"/>
+            <GradientStop Color="#FF1D222C" Offset="1"/>
+            <GradientStop Color="#FF1D222C" Offset="0.504"/>
+        </LinearGradientBrush>
+    </Window.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25" />
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="90"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid Name="ToolBar" Grid.Row="0">
+            <Polygon Fill="White" Opacity="0.15" Points="105,0
+                 114,8
+                 250,8
+                 259,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Image Name ="HideButton" Height="25" Width="25" Margin="5,-2,-5,2">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Hide_no_active.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver,ElementName=HideButton}"
+                                             Value="True">
+                                    <Setter Property="Source" Value="Source/Hide_active.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+                <Image x:Name ="CloseButton" Width="25" Margin="5,4,5,-2">
+                    <Image.Style>
+                        <Style TargetType="{x:Type Image}">
+                            <Setter Property="Source" Value="Source/Close_no_active.png"/>
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding IsMouseOver, ElementName=CloseButton}"
+                                             Value="True">
+                                    <Setter Property="Source" Value="Source/Close_active.png"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Image.Style>
+                </Image>
+            </StackPanel>
+
+        </Grid>
+
+
+    </Grid>
+</Window>

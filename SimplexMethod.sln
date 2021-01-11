@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplexLib", "SimplexLib\Si
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleSimplex", "ConsoleSimplex\ConsoleSimplex.csproj", "{F2F82815-F406-49F1-8AD9-20906907A346}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimplexAppWindows", "SimplexAppWindows\SimplexAppWindows.csproj", "{0AB54E08-BA9E-4DA8-BEA5-E0788B84AC84}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{F2F82815-F406-49F1-8AD9-20906907A346}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2F82815-F406-49F1-8AD9-20906907A346}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2F82815-F406-49F1-8AD9-20906907A346}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0AB54E08-BA9E-4DA8-BEA5-E0788B84AC84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0AB54E08-BA9E-4DA8-BEA5-E0788B84AC84}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0AB54E08-BA9E-4DA8-BEA5-E0788B84AC84}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0AB54E08-BA9E-4DA8-BEA5-E0788B84AC84}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
