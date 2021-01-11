@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SimplexAppWindows"
         mc:Ignorable="d"
-        Title="MainWindow" Height="515" Width="365" WindowStyle="None" ResizeMode="NoResize" >
+        Title="MainWindow" Height="515" Width="365" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" >
     <Window.Background>
         <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
             <GradientStop Color="#FF222B3B" Offset="0"/>
@@ -13,6 +13,40 @@
             <GradientStop Color="#FF1D222C" Offset="0.504"/>
         </LinearGradientBrush>
     </Window.Background>
+    <Window.Resources>
+        <Style x:Key="ComboboxButton" TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="Background" Value="#FF1A1F28"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" BorderThickness="0" BorderBrush="Black" 
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <EventTrigger RoutedEvent="PreviewMouseDown">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                    Duration="0:0:0.100" To="3,3,0,0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                            <EventTrigger RoutedEvent="PreviewMouseUp">
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <ThicknessAnimation Storyboard.TargetProperty="Margin"
+                                                    Duration="0:0:0.100" To="0"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="25" />
@@ -21,13 +55,13 @@
             <RowDefinition Height="90"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Grid Name="ToolBar" Grid.Row="0">
+        <Grid Name="ToolBar" Background="Transparent" Grid.Row="0" MouseDown="ToolBar_MouseDown">
             <Polygon Fill="White" Opacity="0.15" Points="105,0
                  114,8
                  250,8
                  259,0"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                <Image Name ="HideButton" Height="25" Width="25" Margin="5,-2,-5,2">
+                <Image Name ="HideButton" Height="25" Width="25" Margin="5,-2,-5,2" MouseDown="HideButton_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="Source/Hide_no_active.png"/>
@@ -39,8 +73,11 @@
                             </Style.Triggers>
                         </Style>
                     </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
                 </Image>
-                <Image x:Name ="CloseButton" Width="25" Margin="5,4,5,-2">
+                <Image x:Name ="CloseButton" Width="25" Margin="5,4,5,-2" MouseDown="CloseButton_MouseDown">
                     <Image.Style>
                         <Style TargetType="{x:Type Image}">
                             <Setter Property="Source" Value="Source/Close_no_active.png"/>
@@ -52,10 +89,52 @@
                             </Style.Triggers>
                         </Style>
                     </Image.Style>
+                    <Image.Effect>
+                        <BlurEffect Radius="1"/>
+                    </Image.Effect>
                 </Image>
             </StackPanel>
-
         </Grid>
+
+        <Grid Name ="LogoSimplex" Background="Transparent" Grid.Row="1" MouseDown="LogoSimplex_MouseDown">
+            <Image Source="Source/SimplexLog.png">
+                <Image.Effect>
+                    <BlurEffect Radius="1.5"/>
+                </Image.Effect>
+            </Image>
+        </Grid>
+
+        <Border Grid.Row="2" Height="24" Width="40" HorizontalAlignment="Left"
+                VerticalAlignment="Top" Margin="160,8,0,0" CornerRadius="2" BorderThickness="1" Background="Black">
+            <Border.Style>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="BorderBrush" Value="#FF424750"></Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" Value="#FFB3B3B3"/>
+                        </Trigger>
+                        <EventTrigger RoutedEvent="PreviewMouseDown">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color"
+                                                   Duration="0:0:0.100" To="#FF333842"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="PreviewMouseUp">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <ColorAnimation Storyboard.TargetProperty="BorderBrush.Color"
+                                                   Duration="0:0:0.100" To="#FF51555C"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Border.Style>
+            <Button Style="{StaticResource ComboboxButton}"></Button>
+        </Border>
+        <TextBlock Text="Number of variables:" Grid.Row="2" Foreground="#FF00C6FE" FontFamily="Stencil Std" Margin="5,15,205,270"/>
 
 
     </Grid>

@@ -86,5 +86,8 @@
     <Resource Include="Source\Hide_active.png" />
     <Resource Include="Source\Hide_no_active.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Source\SimplexLog.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
